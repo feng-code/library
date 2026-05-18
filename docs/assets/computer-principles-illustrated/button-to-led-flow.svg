@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="365" viewBox="0 0 1080 365" role="img" aria-labelledby="title desc">
+<title id="title">按键点亮 LED：从物理事件到业务结果</title>
+<desc id="desc">用于图解计算机原理教程的矢量示意图，帮助理解模块关系、数据流和验证层级。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect class="bg" x="0" y="0" width="1080" height="365"/>
+
+<style>
+  .bg { fill: #f8fafc; }
+  .title { font: 700 26px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .subtitle { font: 500 15px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .label { font: 700 17px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 13px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+  .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+</style>
+
+<text class="title" x="540" y="42">按键点亮 LED：从物理事件到业务结果</text>
+<text class="subtitle" x="540" y="68">每个节点只代表一个成功层级，不能直接等同最终业务成功</text>
+<rect class="box-orange" x="35" y="135" width="125" height="112"/>
+<text class="label" x="97.5" y="165">按键</text>
+<text class="small" x="97.5" y="189">物理电平</text>
+<text class="small" x="97.5" y="206">变化</text>
+<path class="arrow" d="M 160 191 L 185 191"/>
+<rect class="box-purple" x="185" y="135" width="125" height="112"/>
+<text class="label" x="247.5" y="165">GPIO 输入</text>
+<text class="small" x="247.5" y="189">检测边沿</text>
+<text class="small" x="247.5" y="206">或电平</text>
+<path class="arrow" d="M 310 191 L 335 191"/>
+<rect class="box-red" x="335" y="135" width="125" height="112"/>
+<text class="label" x="397.5" y="165">中断控制器</text>
+<text class="small" x="397.5" y="189">NVIC/GIC</text>
+<text class="small" x="397.5" y="206">通知 CPU</text>
+<path class="arrow" d="M 460 191 L 485 191"/>
+<rect class="box" x="485" y="135" width="125" height="112"/>
+<text class="label" x="547.5" y="165">ISR</text>
+<text class="small" x="547.5" y="189">保存现场</text>
+<text class="small" x="547.5" y="206">清标志</text>
+<text class="small" x="547.5" y="223">投递事件</text>
+<path class="arrow" d="M 610 191 L 635 191"/>
+<rect class="box-green" x="635" y="135" width="125" height="112"/>
+<text class="label" x="697.5" y="165">任务/状态机</text>
+<text class="small" x="697.5" y="189">判断是否</text>
+<text class="small" x="697.5" y="206">允许点灯</text>
+<path class="arrow" d="M 760 191 L 785 191"/>
+<rect class="box-purple" x="785" y="135" width="125" height="112"/>
+<text class="label" x="847.5" y="165">GPIO 输出</text>
+<text class="small" x="847.5" y="189">写寄存器</text>
+<text class="small" x="847.5" y="206">改变引脚</text>
+<path class="arrow" d="M 910 191 L 935 191"/>
+<rect class="box-orange" x="935" y="135" width="125" height="112"/>
+<text class="label" x="997.5" y="165">LED 发光</text>
+<text class="small" x="997.5" y="189">外部电路</text>
+<text class="small" x="997.5" y="206">最终响应</text>
+<text class="subtitle" x="540" y="320">验证要走到引脚电平和外部电路，不要停在日志或函数返回值。</text>
+</svg>

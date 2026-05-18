@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="480" viewBox="0 0 1080 480" role="img" aria-labelledby="title desc">
+<title id="title">CPU 执行模型：取指 → 译码 → 执行 → 写回</title>
+<desc id="desc">用于图解计算机原理教程的矢量示意图，帮助理解模块关系、数据流和验证层级。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect class="bg" x="0" y="0" width="1080" height="480"/>
+
+<style>
+  .bg { fill: #f8fafc; }
+  .title { font: 700 26px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .subtitle { font: 500 15px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .label { font: 700 17px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 13px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+  .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+</style>
+
+<text class="title" x="540" y="42">CPU 执行模型：取指 → 译码 → 执行 → 写回</text>
+<text class="subtitle" x="540" y="68">PC 指向指令，寄存器保存中间状态，Load/Store 负责访问内存和外设</text>
+<rect class="box-purple" x="55" y="135" width="165" height="105"/>
+<text class="label" x="137.5" y="165">PC</text>
+<text class="small" x="137.5" y="189">下一条</text>
+<text class="small" x="137.5" y="206">指令地址</text>
+<rect class="box" x="275" y="135" width="165" height="105"/>
+<text class="label" x="357.5" y="165">Fetch</text>
+<text class="small" x="357.5" y="189">从 I-Cache/RAM</text>
+<text class="small" x="357.5" y="206">读取机器指令</text>
+<rect class="box" x="495" y="135" width="165" height="105"/>
+<text class="label" x="577.5" y="165">Decode</text>
+<text class="small" x="577.5" y="189">识别操作码</text>
+<text class="small" x="577.5" y="206">解析操作数</text>
+<rect class="box-green" x="715" y="135" width="165" height="105"/>
+<text class="label" x="797.5" y="165">Execute</text>
+<text class="small" x="797.5" y="189">ALU / LoadStore</text>
+<text class="small" x="797.5" y="206">跳转 / 访存</text>
+<rect class="box-orange" x="480" y="315" width="190" height="110"/>
+<text class="label" x="575.0" y="345">Registers</text>
+<text class="small" x="575.0" y="369">R0..Rn / SP / LR</text>
+<text class="small" x="575.0" y="386">保存中间状态</text>
+<path class="arrow" d="M 220 187 L 275 187"/>
+<path class="arrow" d="M 440 187 L 495 187"/>
+<path class="arrow" d="M 660 187 L 715 187"/>
+<path class="arrow" d="M 795 240 L 670 315"/>
+<path class="dash" d="M 575 315 L 575 240"/>
+<text class="subtitle" x="350" y="285">C 语句会拆成 LOAD、ADD、STORE 等机器动作</text>
+</svg>

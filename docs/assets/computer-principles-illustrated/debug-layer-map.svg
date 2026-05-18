@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="590" viewBox="0 0 1080 590" role="img" aria-labelledby="title desc">
+<title id="title">调试地图：找到第一个不符合预期的层级</title>
+<desc id="desc">用于图解计算机原理教程的矢量示意图，帮助理解模块关系、数据流和验证层级。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect class="bg" x="0" y="0" width="1080" height="590"/>
+
+<style>
+  .bg { fill: #f8fafc; }
+  .title { font: 700 26px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .subtitle { font: 500 15px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .label { font: 700 17px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 13px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+  .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+</style>
+
+<text class="title" x="540" y="42">调试地图：找到第一个不符合预期的层级</text>
+<text class="subtitle" x="540" y="68">先分层，再下钻；本轮只推进一个验证目标</text>
+<rect class="box-green" x="360" y="100" width="360" height="64"/>
+<text class="label" x="540.0" y="130">复现</text>
+<text class="small" x="540.0" y="154">固定输入 / 版本 / 环境</text>
+<path class="arrow" d="M 540 164 L 540 165"/>
+<rect class="box" x="360" y="165" width="360" height="64"/>
+<text class="label" x="540.0" y="195">输入</text>
+<text class="small" x="540.0" y="219">原始报文 / 电平 / 文件</text>
+<path class="arrow" d="M 540 229 L 540 230"/>
+<rect class="box-green" x="360" y="230" width="360" height="64"/>
+<text class="label" x="540.0" y="260">解析</text>
+<text class="small" x="540.0" y="284">校验 / 字段 / 边界</text>
+<path class="arrow" d="M 540 294 L 540 295"/>
+<rect class="box" x="360" y="295" width="360" height="64"/>
+<text class="label" x="540.0" y="325">状态机</text>
+<text class="small" x="540.0" y="349">当前状态是否允许</text>
+<path class="arrow" d="M 540 359 L 540 360"/>
+<rect class="box-green" x="360" y="360" width="360" height="64"/>
+<text class="label" x="540.0" y="390">本地执行</text>
+<text class="small" x="540.0" y="414">返回值和状态变化</text>
+<path class="arrow" d="M 540 424 L 540 425"/>
+<rect class="box" x="360" y="425" width="360" height="64"/>
+<text class="label" x="540.0" y="455">外设/系统</text>
+<text class="small" x="540.0" y="479">寄存器 / 波形 / 反馈</text>
+<path class="arrow" d="M 540 489 L 540 490"/>
+<rect class="box-green" x="360" y="490" width="360" height="64"/>
+<text class="label" x="540.0" y="520">上报确认</text>
+<text class="small" x="540.0" y="544">ACK / 云端 / 用户侧</text>
+<text class="subtitle" x="190" y="300">不要从头发散</text>
+<text class="subtitle" x="190" y="326">只验证当前假设</text>
+<text class="subtitle" x="890" y="300">日志回答：</text>
+<text class="subtitle" x="890" y="326">输入 / 状态 / 返回值 / 下一步</text>
+</svg>
