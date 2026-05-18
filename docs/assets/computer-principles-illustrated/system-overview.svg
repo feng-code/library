@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="460" viewBox="0 0 1080 460" role="img">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect class="bg" x="0" y="0" width="1080" height="460"/>
+
+<style>
+  .bg { fill: #f8fafc; }
+  .title { font: 700 26px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; }
+  .subtitle { font: 500 15px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .label { font: 700 18px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 13px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+  .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+  .lane { fill: #e2e8f0; stroke: #cbd5e1; stroke-width: 1; rx: 8; ry: 8; }
+  .bar-blue { fill: #3b82f6; rx: 5; ry: 5; }
+  .bar-green { fill: #10b981; rx: 5; ry: 5; }
+  .bar-orange { fill: #f97316; rx: 5; ry: 5; }
+</style>
+
+<text class="title" x="540" y="42">计算机系统总览：自动化工厂模型</text>
+<text class="subtitle" x="540" y="68">程序、数据、指令、总线和外设如何协同完成业务动作</text>
+<rect class="box-orange" x="40" y="120" width="190" height="120"/>
+<text class="label" x="135.0" y="152">存储仓库</text>
+<text class="small" x="135.0" y="176">Flash / SSD</text>
+<text class="small" x="135.0" y="194">程序、文件、固件</text>
+<rect class="box-green" x="310" y="120" width="190" height="120"/>
+<text class="label" x="405.0" y="152">临时货架</text>
+<text class="small" x="405.0" y="176">RAM / Cache</text>
+<text class="small" x="405.0" y="194">代码、数据、栈、堆</text>
+<rect class="box" x="580" y="120" width="190" height="120"/>
+<text class="label" x="675.0" y="152">调度车间</text>
+<text class="small" x="675.0" y="176">CPU Core</text>
+<text class="small" x="675.0" y="194">取指 / 译码 / 执行</text>
+<rect class="box-purple" x="850" y="120" width="190" height="120"/>
+<text class="label" x="945.0" y="152">外设窗口</text>
+<text class="small" x="945.0" y="176">GPIO / UART / SPI</text>
+<text class="small" x="945.0" y="194">屏幕、网络、传感器</text>
+<rect class="box-gray" x="310" y="320" width="460" height="90"/>
+<text class="label" x="540.0" y="352">系统道路</text>
+<text class="small" x="540.0" y="376">Bus / AXI / AHB / APB：承载地址、数据、控制信号</text>
+<path class="arrow" d="M 230 180 L 310 180"/>
+<path class="arrow" d="M 500 180 L 580 180"/>
+<path class="arrow" d="M 770 180 L 850 180"/>
+<path class="arrow" d="M 405 240 L 405 320"/>
+<path class="arrow" d="M 675 240 L 675 320"/>
+<path class="arrow" d="M 850 320 L 770 360"/>
+<path class="arrow" d="M 310 360 L 230 220"/>
+<text class="tiny" x="270" y="166">加载</text>
+<text class="tiny" x="540" y="166">取指/读写</text>
+<text class="tiny" x="810" y="166">控制/反馈</text>
+</svg>

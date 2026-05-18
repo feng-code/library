@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="600" viewBox="0 0 1080 600" role="img">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect class="bg" x="0" y="0" width="1080" height="600"/>
+
+<style>
+  .bg { fill: #f8fafc; }
+  .title { font: 700 26px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; }
+  .subtitle { font: 500 15px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .label { font: 700 18px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 13px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+  .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+  .lane { fill: #e2e8f0; stroke: #cbd5e1; stroke-width: 1; rx: 8; ry: 8; }
+  .bar-blue { fill: #3b82f6; rx: 5; ry: 5; }
+  .bar-green { fill: #10b981; rx: 5; ry: 5; }
+  .bar-orange { fill: #f97316; rx: 5; ry: 5; }
+</style>
+
+<text class="title" x="540" y="42">运行时内存布局：不同区域，不同生命周期</text>
+<rect class="box-red" x="360" y="90" width="360" height="62"/>
+<text class="label" x="540.0" y="122">Stack 栈</text>
+<text class="small" x="540.0" y="146">局部变量、返回地址，常向低地址增长</text>
+<rect class="box-gray" x="360" y="158" width="360" height="62"/>
+<text class="label" x="540.0" y="190">空闲/保护区</text>
+<text class="small" x="540.0" y="214">栈堆之间的缓冲或 guard</text>
+<rect class="box-orange" x="360" y="226" width="360" height="62"/>
+<text class="label" x="540.0" y="258">Heap 堆</text>
+<text class="small" x="540.0" y="282">malloc/new 动态内存，常向高地址增长</text>
+<rect class="box-green" x="360" y="294" width="360" height="62"/>
+<text class="label" x="540.0" y="326">BSS</text>
+<text class="small" x="540.0" y="350">未初始化全局/静态变量，启动清零</text>
+<rect class="box-green" x="360" y="362" width="360" height="62"/>
+<text class="label" x="540.0" y="394">Data</text>
+<text class="small" x="540.0" y="418">已初始化全局/静态变量</text>
+<rect class="box-purple" x="360" y="430" width="360" height="62"/>
+<text class="label" x="540.0" y="462">Rodata</text>
+<text class="small" x="540.0" y="486">字符串常量、只读表</text>
+<rect class="box" x="360" y="498" width="360" height="62"/>
+<text class="label" x="540.0" y="530">Text</text>
+<text class="small" x="540.0" y="554">机器指令</text>
+<text class="subtitle" x="290" y="115">高地址</text>
+<text class="subtitle" x="290" y="530">低地址</text>
+<path class="arrow" d="M 750 150 L 750 105"/>
+<text class="small" x="810" y="132">栈向低地址增长</text>
+<path class="arrow" d="M 750 275 L 750 330"/>
+<text class="small" x="815" y="306">堆向高地址增长</text>
+</svg>
