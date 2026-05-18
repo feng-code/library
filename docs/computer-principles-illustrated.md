@@ -8,6 +8,8 @@
 
 ## 0. 先给总图：计算机是一座“自动化工厂”
 
+![计算机系统总览：自动化工厂模型](assets/computer-principles-illustrated/system-overview.svg)
+
 **结论：计算机不是魔法，它是一座高速自动化工厂：CPU 是调度车间，内存是临时货架，存储是仓库，总线是道路，外设是和现实世界交互的窗口。**
 
 ```text
@@ -36,6 +38,8 @@
 ```
 
 ### 0.1 一条业务动作的真实链路
+
+![按键点亮 LED：从物理事件到业务结果](assets/computer-principles-illustrated/button-to-led-flow.svg)
 
 以“按键点亮 LED”为例，真实链路不是一句 `led_on()`，而是：
 
@@ -153,6 +157,8 @@ int main(void) {
 
 ### 2.1 CPU 内部图
 
+![CPU 执行模型：取指、译码、执行、写回](assets/computer-principles-illustrated/cpu-pipeline.svg)
+
 ```text
                     ┌─────────────────────────┐
                     │          CPU Core        │
@@ -229,6 +235,8 @@ RAM[addr_b] ──LOAD──► R2 ┘
 **结论：内存不是一整块随便用的空间，它被划分成代码段、只读数据、全局数据、BSS、堆、栈等区域；不同区域的生命周期和错误模式完全不同。**
 
 ### 3.1 典型进程/固件内存布局
+
+![运行时内存布局：不同区域，不同生命周期](assets/computer-principles-illustrated/memory-layout.svg)
 
 ```text
 高地址
@@ -454,6 +462,8 @@ RAM 中运行变量：
 
 ### 6.2 写 GPIO 的真实链路
 
+![MMIO 外设访问：写寄存器到真实电平的链路](assets/computer-principles-illustrated/mmio-gpio-chain.svg)
+
 ```text
 C 代码：GPIO_OUT_REG |= BIT5
   │
@@ -557,6 +567,8 @@ ISR：                                  ├─ 读状态
 ---
 
 ## 8. DMA：不用 CPU 搬货的“自动传送带”
+
+![DMA + Cache + RTOS：高吞吐接收的典型链路](assets/computer-principles-illustrated/dma-cache-rtos.svg)
 
 **结论：DMA 让外设和内存直接搬数据，释放 CPU；代价是你必须管理缓冲区、边界、同步和 Cache 一致性。**
 
@@ -812,6 +824,8 @@ Flash/eMMC/SSD 控制器
 
 ### 12.2 命令执行闭环
 
+![协议成功层级：ACK 不等于业务最终成功](assets/computer-principles-illustrated/protocol-success-layers.svg)
+
 ```text
 接收报文
   │
@@ -949,6 +963,8 @@ LED 发光
 ---
 
 ## 16. 调试通用地图：先分层，再下钻
+
+![调试地图：找到第一个不符合预期的层级](assets/computer-principles-illustrated/debug-layer-map.svg)
 
 **结论：调试不是猜，而是把现象放到链路上，找到第一个不符合预期的层级。**
 

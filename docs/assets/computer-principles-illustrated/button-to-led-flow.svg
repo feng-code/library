@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="360" viewBox="0 0 1080 360" role="img">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect class="bg" x="0" y="0" width="1080" height="360"/>
+
+<style>
+  .bg { fill: #f8fafc; }
+  .title { font: 700 26px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; }
+  .subtitle { font: 500 15px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .label { font: 700 18px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 13px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+  .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+  .lane { fill: #e2e8f0; stroke: #cbd5e1; stroke-width: 1; rx: 8; ry: 8; }
+  .bar-blue { fill: #3b82f6; rx: 5; ry: 5; }
+  .bar-green { fill: #10b981; rx: 5; ry: 5; }
+  .bar-orange { fill: #f97316; rx: 5; ry: 5; }
+</style>
+
+<text class="title" x="540" y="42">按键点亮 LED：从物理事件到业务结果</text>
+<rect class="box-orange" x="35" y="140" width="125" height="94"/>
+<text class="label" x="97.5" y="172">手按下按键</text>
+<text class="small" x="97.5" y="196">物理电平变化</text>
+<path class="arrow" d="M 160 187 L 185 187"/>
+<rect class="box-purple" x="185" y="140" width="125" height="94"/>
+<text class="label" x="247.5" y="172">GPIO 输入</text>
+<text class="small" x="247.5" y="196">检测边沿/电平</text>
+<path class="arrow" d="M 310 187 L 335 187"/>
+<rect class="box-red" x="335" y="140" width="125" height="94"/>
+<text class="label" x="397.5" y="172">中断控制器</text>
+<text class="small" x="397.5" y="196">NVIC / GIC 通知 CPU</text>
+<path class="arrow" d="M 460 187 L 485 187"/>
+<rect class="box" x="485" y="140" width="125" height="94"/>
+<text class="label" x="547.5" y="172">ISR</text>
+<text class="small" x="547.5" y="196">保存现场、清标志、投递事件</text>
+<path class="arrow" d="M 610 187 L 635 187"/>
+<rect class="box-green" x="635" y="140" width="125" height="94"/>
+<text class="label" x="697.5" y="172">任务/状态机</text>
+<text class="small" x="697.5" y="196">判断是否允许点灯</text>
+<path class="arrow" d="M 760 187 L 785 187"/>
+<rect class="box-purple" x="785" y="140" width="125" height="94"/>
+<text class="label" x="847.5" y="172">GPIO 输出</text>
+<text class="small" x="847.5" y="196">写寄存器、改变引脚电平</text>
+<path class="arrow" d="M 910 187 L 935 187"/>
+<rect class="box-orange" x="935" y="140" width="125" height="94"/>
+<text class="label" x="997.5" y="172">LED 发光</text>
+<text class="small" x="997.5" y="196">外部电路响应</text>
+<text class="subtitle" x="540" y="310">关键原则：进入 ISR、写寄存器、日志 success 都只是某一层成功；最终要验证 LED 引脚和外部电路。</text>
+</svg>

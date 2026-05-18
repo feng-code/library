@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="370" viewBox="0 0 1080 370" role="img">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect class="bg" x="0" y="0" width="1080" height="370"/>
+
+<style>
+  .bg { fill: #f8fafc; }
+  .title { font: 700 26px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; }
+  .subtitle { font: 500 15px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
+  .label { font: 700 18px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 13px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+  .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+  .lane { fill: #e2e8f0; stroke: #cbd5e1; stroke-width: 1; rx: 8; ry: 8; }
+  .bar-blue { fill: #3b82f6; rx: 5; ry: 5; }
+  .bar-green { fill: #10b981; rx: 5; ry: 5; }
+  .bar-orange { fill: #f97316; rx: 5; ry: 5; }
+</style>
+
+<text class="title" x="540" y="42">MMIO 外设访问：写寄存器到真实电平的链路</text>
+<rect class="box" x="60" y="140" width="135" height="100"/>
+<text class="label" x="127.5" y="172">C 代码</text>
+<text class="small" x="127.5" y="196">GPIO_OUT_REG |= BIT5</text>
+<path class="arrow" d="M 195 190 L 225 190"/>
+<rect class="box" x="225" y="140" width="135" height="100"/>
+<text class="label" x="292.5" y="172">机器指令</text>
+<text class="small" x="292.5" y="196">load / or / store</text>
+<path class="arrow" d="M 360 190 L 390 190"/>
+<rect class="box-green" x="390" y="140" width="135" height="100"/>
+<text class="label" x="457.5" y="172">CPU 总线事务</text>
+<text class="small" x="457.5" y="196">地址 + 数据 + 控制信号</text>
+<path class="arrow" d="M 525 190 L 555 190"/>
+<rect class="box-purple" x="555" y="140" width="135" height="100"/>
+<text class="label" x="622.5" y="172">GPIO 寄存器</text>
+<text class="small" x="622.5" y="196">输出数据寄存器锁存 bit5</text>
+<path class="arrow" d="M 690 190 L 720 190"/>
+<rect class="box-orange" x="720" y="140" width="135" height="100"/>
+<text class="label" x="787.5" y="172">Pad / 引脚</text>
+<text class="small" x="787.5" y="196">管脚电平变化</text>
+<path class="arrow" d="M 855 190 L 885 190"/>
+<rect class="box-red" x="885" y="140" width="135" height="100"/>
+<text class="label" x="952.5" y="172">外部电路</text>
+<text class="small" x="952.5" y="196">LED/继电器/传感器响应</text>
+<text class="subtitle" x="540" y="315">volatile 只约束编译器优化；不能替代时钟、复用、方向、寄存器读回和波形验证。</text>
+</svg>
