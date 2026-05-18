@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="385" viewBox="0 0 1080 385" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="550" viewBox="0 0 1280 550" role="img" aria-labelledby="title desc">
 <title id="title">MMIO 外设访问：写寄存器到真实电平的链路</title>
-<desc id="desc">用于图解计算机原理教程的矢量示意图，帮助理解模块关系、数据流和验证层级。</desc>
+<desc id="desc">用于图解计算机原理教程的矢量示意图。图中为概念模型，箭头表示主要数据流、控制流或验证链路。</desc>
 <defs>
   <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
     <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
@@ -9,55 +9,55 @@
     <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
   </filter>
 </defs>
-<rect class="bg" x="0" y="0" width="1080" height="385"/>
+<rect class="bg" x="0" y="0" width="1280" height="550"/>
 
 <style>
   .bg { fill: #f8fafc; }
-  .title { font: 700 26px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
-  .subtitle { font: 500 15px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
-  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
-  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
-  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
-  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
-  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
-  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; rx: 14; ry: 14; filter: url(#shadow); }
-  .label { font: 700 17px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
-  .small { font: 500 13px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .title { font: 700 28px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .subtitle { font: 500 16px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .label { font: 700 18px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 14px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
   .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
   .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
-  .dash { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2.2; fill: none; stroke-dasharray: 8 7; marker-end: url(#arrow); }
 </style>
 
-<text class="title" x="540" y="42">MMIO 外设访问：写寄存器到真实电平的链路</text>
-<text class="subtitle" x="540" y="68">寄存器写入只是链路中的一层，最终还要验证引脚、电路和业务反馈</text>
-<rect class="box" x="55" y="140" width="138" height="112"/>
-<text class="label" x="124.0" y="170">C 代码</text>
-<text class="small" x="124.0" y="194">GPIO_OUT_REG</text>
-<text class="small" x="124.0" y="211">|= BIT5</text>
-<path class="arrow" d="M 193 196 L 221 196"/>
-<rect class="box" x="221" y="140" width="138" height="112"/>
-<text class="label" x="290.0" y="170">机器指令</text>
-<text class="small" x="290.0" y="194">load / or</text>
-<text class="small" x="290.0" y="211">store</text>
-<path class="arrow" d="M 359 196 L 387 196"/>
-<rect class="box-green" x="387" y="140" width="138" height="112"/>
-<text class="label" x="456.0" y="170">CPU 总线事务</text>
-<text class="small" x="456.0" y="194">地址 / 数据</text>
-<text class="small" x="456.0" y="211">控制信号</text>
-<path class="arrow" d="M 525 196 L 553 196"/>
-<rect class="box-purple" x="553" y="140" width="138" height="112"/>
-<text class="label" x="622.0" y="170">GPIO 寄存器</text>
-<text class="small" x="622.0" y="194">输出寄存器</text>
-<text class="small" x="622.0" y="211">锁存 bit5</text>
-<path class="arrow" d="M 691 196 L 719 196"/>
-<rect class="box-orange" x="719" y="140" width="138" height="112"/>
-<text class="label" x="788.0" y="170">Pad / 引脚</text>
-<text class="small" x="788.0" y="194">管脚电平</text>
-<text class="small" x="788.0" y="211">发生变化</text>
-<path class="arrow" d="M 857 196 L 885 196"/>
-<rect class="box-red" x="885" y="140" width="138" height="112"/>
-<text class="label" x="954.0" y="170">外部电路</text>
-<text class="small" x="954.0" y="194">LED/继电器</text>
-<text class="small" x="954.0" y="211">传感器响应</text>
-<text class="subtitle" x="540" y="330">volatile 不能替代时钟、复用、方向、寄存器读回和波形验证。</text>
+<text class="title" x="640.0" y="44">MMIO 外设访问：写寄存器到真实电平的链路</text>
+<text class="subtitle" x="640.0" y="74">寄存器写入只是链路中的一层，最终还要验证引脚、电路和业务反馈</text>
+<rect class="box" x="90" y="135" width="180" height="125"/>
+<text class="label" x="180.0" y="169">C 代码</text>
+<text class="small" x="180.0" y="197">GPIO_OUT_REG</text>
+<text class="small" x="180.0" y="216">|= BIT5</text>
+<rect class="box" x="330" y="135" width="180" height="125"/>
+<text class="label" x="420.0" y="169">机器指令</text>
+<text class="small" x="420.0" y="197">load / or</text>
+<text class="small" x="420.0" y="216">store</text>
+<rect class="box-green" x="570" y="135" width="180" height="125"/>
+<text class="label" x="660.0" y="169">CPU 总线事务</text>
+<text class="small" x="660.0" y="197">地址 / 数据</text>
+<text class="small" x="660.0" y="216">控制信号</text>
+<rect class="box-purple" x="570" y="320" width="180" height="125"/>
+<text class="label" x="660.0" y="354">GPIO 寄存器</text>
+<text class="small" x="660.0" y="382">输出寄存器</text>
+<text class="small" x="660.0" y="401">锁存 bit5</text>
+<rect class="box-orange" x="330" y="320" width="180" height="125"/>
+<text class="label" x="420.0" y="354">Pad / 引脚</text>
+<text class="small" x="420.0" y="382">管脚电平</text>
+<text class="small" x="420.0" y="401">发生变化</text>
+<rect class="box-red" x="90" y="320" width="180" height="125"/>
+<text class="label" x="180.0" y="354">外部电路</text>
+<text class="small" x="180.0" y="382">LED / 继电器</text>
+<text class="small" x="180.0" y="401">传感器响应</text>
+<path class="arrow" d="M 270 198 L 330 198"/>
+<path class="arrow" d="M 510 198 L 570 198"/>
+<path class="arrow" d="M 660 260 L 660 320"/>
+<path class="arrow" d="M 570 383 L 510 383"/>
+<path class="arrow" d="M 330 383 L 270 383"/>
+<text class="subtitle" x="640.0" y="505">volatile 不能替代时钟、复用、方向、寄存器读回和波形验证。</text>
 </svg>
