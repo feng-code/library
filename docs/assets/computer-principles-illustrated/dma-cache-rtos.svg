@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-labelledby="title desc">
+<title id="title">DMA + Cache + RTOS：高吞吐接收的典型链路</title>
+<desc id="desc">用于图解计算机原理教程的矢量示意图。图中为概念模型，箭头表示主要数据流、控制流或验证链路。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect class="bg" x="0" y="0" width="1280" height="560"/>
+
+<style>
+  .bg { fill: #f8fafc; }
+  .title { font: 700 28px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .subtitle { font: 500 16px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .label { font: 700 18px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 14px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+  .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2.2; fill: none; stroke-dasharray: 8 7; marker-end: url(#arrow); }
+</style>
+
+<text class="title" x="640.0" y="44">DMA + Cache + RTOS：高吞吐接收的典型链路</text>
+<text class="subtitle" x="640.0" y="74">DMA 负责搬运，Cache 影响可见性，任务线程负责复杂解析</text>
+<rect class="box-purple" x="90" y="145" width="170" height="125"/>
+<text class="label" x="175.0" y="179">UART RX</text>
+<text class="small" x="175.0" y="207">字节流</text>
+<text class="small" x="175.0" y="226">进入外设</text>
+<rect class="box-green" x="350" y="145" width="170" height="125"/>
+<text class="label" x="435.0" y="179">DMA</text>
+<text class="small" x="435.0" y="207">自动写入</text>
+<text class="small" x="435.0" y="226">rx_buffer</text>
+<rect class="box-orange" x="610" y="145" width="200" height="125"/>
+<text class="label" x="710.0" y="179">RAM Buffer</text>
+<text class="small" x="710.0" y="207">环形缓冲</text>
+<text class="small" x="710.0" y="226">或双缓冲</text>
+<rect class="box-red" x="930" y="95" width="200" height="125"/>
+<text class="label" x="1030.0" y="129">D-Cache</text>
+<text class="small" x="1030.0" y="157">CPU 可能</text>
+<text class="small" x="1030.0" y="176">读到旧数据</text>
+<rect class="box" x="930" y="295" width="200" height="125"/>
+<text class="label" x="1030.0" y="329">协议任务</text>
+<text class="small" x="1030.0" y="357">队列唤醒后</text>
+<text class="small" x="1030.0" y="376">解析数据</text>
+<path class="arrow" d="M 260 208 L 350 208"/>
+<path class="arrow" d="M 520 208 L 610 208"/>
+<path class="dash" d="M 810 208 L 930 158"/>
+<path class="arrow" d="M 810 225 L 930 358"/>
+<text class="subtitle" x="640.0" y="480">接收路径：DMA 写 RAM 后，CPU 读取前通常要按平台要求 invalidate cache。</text>
+<text class="subtitle" x="640.0" y="510">上下文边界：ISR/DMA 回调只投递事件，复杂协议解析放到任务线程。</text>
+</svg>

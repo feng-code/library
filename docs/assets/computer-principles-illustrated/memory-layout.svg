@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1120" viewBox="0 0 1100 1120" role="img" aria-labelledby="title desc">
+<title id="title">运行时内存布局：不同区域，不同生命周期</title>
+<desc id="desc">用于图解计算机原理教程的矢量示意图。图中为概念模型，箭头表示主要数据流、控制流或验证链路。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect class="bg" x="0" y="0" width="1100" height="1120"/>
+<style>
+  .bg { fill: #f8fafc; }
+  .title { font: 700 28px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .subtitle { font: 500 16px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .label { font: 700 18px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 14px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+  .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2.2; fill: none; stroke-dasharray: 8 7; marker-end: url(#arrow); }
+</style>
+<text class="title" x="550.0" y="44">运行时内存布局：不同区域，不同生命周期</text>
+<text class="subtitle" x="550.0" y="74">不同区域对应不同错误模式：栈溢出、堆碎片、全局变量污染、代码跑飞</text>
+<rect class="box-red" x="350" y="105" width="400" height="128"/>
+<text class="label" x="550.0" y="139">Stack 栈</text>
+<text class="small" x="550.0" y="167">局部变量 / 返回地址</text>
+<text class="small" x="550.0" y="187">保存寄存器</text>
+<text class="small" x="550.0" y="207">向低地址增长</text>
+<rect class="box-gray" x="350" y="245" width="400" height="128"/>
+<text class="label" x="550.0" y="279">Guard / 空闲</text>
+<text class="small" x="550.0" y="307">栈堆之间的缓冲</text>
+<text class="small" x="550.0" y="327">或保护区</text>
+<rect class="box-orange" x="350" y="385" width="400" height="128"/>
+<text class="label" x="550.0" y="419">Heap 堆</text>
+<text class="small" x="550.0" y="447">malloc / new</text>
+<text class="small" x="550.0" y="467">动态内存</text>
+<text class="small" x="550.0" y="487">向高地址增长</text>
+<rect class="box-green" x="350" y="525" width="400" height="128"/>
+<text class="label" x="550.0" y="559">BSS</text>
+<text class="small" x="550.0" y="587">未初始化全局/静态变量</text>
+<text class="small" x="550.0" y="607">启动时清零</text>
+<rect class="box-green" x="350" y="665" width="400" height="128"/>
+<text class="label" x="550.0" y="699">Data</text>
+<text class="small" x="550.0" y="727">已初始化全局/静态变量</text>
+<rect class="box-purple" x="350" y="805" width="400" height="128"/>
+<text class="label" x="550.0" y="839">Rodata</text>
+<text class="small" x="550.0" y="867">字符串常量</text>
+<text class="small" x="550.0" y="887">只读表</text>
+<rect class="box" x="350" y="945" width="400" height="128"/>
+<text class="label" x="550.0" y="979">Text</text>
+<text class="small" x="550.0" y="1007">机器指令</text>
+<text class="small" x="550.0" y="1027">代码段</text>
+<text class="subtitle" x="275" y="135">高地址</text>
+<text class="subtitle" x="275" y="980">低地址</text>
+<path class="arrow" d="M 790 185 L 790 135"/>
+<text class="small" x="900" y="160">栈向低地址增长</text>
+<path class="arrow" d="M 790 400 L 790 495"/>
+<text class="small" x="900" y="450">堆向高地址增长</text>
+</svg>

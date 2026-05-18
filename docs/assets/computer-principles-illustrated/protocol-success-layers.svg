@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="550" viewBox="0 0 1280 550" role="img" aria-labelledby="title desc">
+<title id="title">协议成功层级：ACK 不等于业务最终成功</title>
+<desc id="desc">用于图解计算机原理教程的矢量示意图。图中为概念模型，箭头表示主要数据流、控制流或验证链路。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect class="bg" x="0" y="0" width="1280" height="550"/>
+
+<style>
+  .bg { fill: #f8fafc; }
+  .title { font: 700 28px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .subtitle { font: 500 16px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-green { fill: #ecfdf5; stroke: #059669; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-purple { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-red { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .box-gray { fill: #f1f5f9; stroke: #64748b; stroke-width: 2.2; rx: 16; ry: 16; filter: url(#shadow); }
+  .label { font: 700 18px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+  .small { font: 500 14px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #475569; text-anchor: middle; }
+  .tiny { font: 500 12px 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+  .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+  .dash { stroke: #64748b; stroke-width: 2.2; fill: none; stroke-dasharray: 8 7; marker-end: url(#arrow); }
+</style>
+
+<text class="title" x="640.0" y="44">协议成功层级：ACK 不等于业务最终成功</text>
+<text class="subtitle" x="640.0" y="74">每一层都要有自己的通过标准，不能把局部成功当成最终成功</text>
+<rect class="box-gray" x="90" y="135" width="180" height="125"/>
+<text class="label" x="180.0" y="169">接收报文</text>
+<text class="small" x="180.0" y="197">帧校验</text>
+<text class="small" x="180.0" y="216">长度 / 版本</text>
+<rect class="box" x="330" y="135" width="180" height="125"/>
+<text class="label" x="420.0" y="169">协议解析</text>
+<text class="small" x="420.0" y="197">字段合法</text>
+<text class="small" x="420.0" y="216">权限通过</text>
+<rect class="box-green" x="570" y="135" width="180" height="125"/>
+<text class="label" x="660.0" y="169">本地执行</text>
+<text class="small" x="660.0" y="197">参数写入</text>
+<text class="small" x="660.0" y="216">状态切换</text>
+<rect class="box-purple" x="570" y="320" width="180" height="125"/>
+<text class="label" x="660.0" y="354">外设执行</text>
+<text class="small" x="660.0" y="382">下位机 ACK</text>
+<text class="small" x="660.0" y="401">实际反馈</text>
+<rect class="box-orange" x="330" y="320" width="180" height="125"/>
+<text class="label" x="420.0" y="354">事件上报</text>
+<text class="small" x="420.0" y="382">平台收到</text>
+<text class="small" x="420.0" y="401">云端确认</text>
+<rect class="box-red" x="90" y="320" width="180" height="125"/>
+<text class="label" x="180.0" y="354">用户可见</text>
+<text class="small" x="180.0" y="382">业务最终</text>
+<text class="small" x="180.0" y="401">真正生效</text>
+<path class="arrow" d="M 270 198 L 330 198"/>
+<path class="arrow" d="M 510 198 L 570 198"/>
+<path class="arrow" d="M 660 260 L 660 320"/>
+<path class="arrow" d="M 570 383 L 510 383"/>
+<path class="arrow" d="M 330 383 L 270 383"/>
+<text class="subtitle" x="640.0" y="505">send 成功、ACK 成功、日志 success、本地状态更新，都不能直接等同最终业务成功。</text>
+</svg>
