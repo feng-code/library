@@ -277,3 +277,94 @@ DMA 降低 CPU 搬运开销，但要处理：
 4. **失败停在哪一层？**
 
 只要这四问稳定输出，你就从“会写代码”进入“会做系统工程”。
+
+
+---
+
+## 16. 结合 `feng-code/library` 仓库落地（实战版）
+
+> 仓库地址：`https://github.com/feng-code/library.git`  
+> 当前仓库现状（本地可见）：仅有 `README.md` 与本教程文档，因此最适合把它作为“从 0 到 1 的系统实验脚手架”。
+
+### 16.1 先把仓库变成可实验的最小工程
+
+建议新增目录结构（按教程章节映射）：
+
+```text
+library/
+├─ README.md
+├─ docs/
+│  └─ computer-principles-illustrated-optimized.md
+├─ labs/
+│  ├─ 01-endian/
+│  ├─ 02-stack-frame/
+│  ├─ 03-overflow-watch/
+│  ├─ 04-mmio-mock/
+│  ├─ 05-irq-event/
+│  ├─ 06-dma-ring-cache/
+│  ├─ 07-rtos-queue-sim/
+│  ├─ 08-fsync-powerloss/
+│  └─ 09-tcp-udp-loop/
+└─ tools/
+   ├─ run_all.sh
+   └─ check_env.sh
+```
+
+**价值**：教程不再是“阅读材料”，而变成“可运行课程”。
+
+### 16.2 每个实验目录统一 4 件套
+
+每个 `labs/*` 建议统一包含：
+
+1. `README.md`：实验目标、输入、步骤、通过标准。  
+2. `main.c` / `main.py`：最小可运行代码。  
+3. `Makefile` 或 `CMakeLists.txt`：一键构建。  
+4. `expected.txt`：预期输出，用于自动比对。
+
+这样你能做到：
+- 新同学 5 分钟跑通；
+- CI 可自动验证；
+- 复盘可回放同一输入。
+
+### 16.3 把“成功定义”转成仓库里的可执行检查
+
+| 教程章节 | 成功定义 | 仓库中的自动检查建议 |
+|---|---|---|
+| 字节序 | 判断大/小端 | `labs/01-endian` 输出匹配 `expected.txt` |
+| 栈帧 | 看到调用深度变化 | `addr2line` + 回溯日志关键字段存在 |
+| 越界 | 定位写坏点 | ASan 运行时出现明确报错并定位行号 |
+| MMIO | 写寄存器链路可解释 | mock 寄存器前后值断言通过 |
+| IRQ | ISR 与消费一致 | 中断计数 == 队列消费计数 |
+| DMA | 不丢帧不重帧 | ring buffer 统计一致 |
+| fsync | 掉电后一致 | kill/restart 后 checksum 一致 |
+| TCP/UDP | 区分发送与业务成功 | 本地 send 成功但业务 ACK 另行校验 |
+
+### 16.4 给这个仓库的日志规范（建议直接复制）
+
+```text
+[TIMESTAMP][LAB][LAYER][PHASE] input=... state_before=... action=... ret=... state_after=... next=...
+```
+
+例如：
+
+```text
+[2026-05-19T10:00:00Z][LAB06][DMA][rx_half] write_pos=128 read_pos=64 invalidate=done ret=0 next=parse
+```
+
+### 16.5 针对该仓库的迭代路线（3 周）
+
+- **第 1 周**：搭建 `labs/01~03`（表示层+执行层+内存层）。  
+- **第 2 周**：搭建 `labs/04~07`（外设链路+并发层）。  
+- **第 3 周**：搭建 `labs/08~09`（持久化+网络层），并加 `tools/run_all.sh` 串联回归。
+
+**验收标准**：`tools/run_all.sh` 一次执行完成后，输出每个实验的 PASS/FAIL 与失败层级。
+
+### 16.6 关键优化结论
+
+结合 `feng-code/library` 仓库后，本教程从“知识文档”升级为“课程化工程框架”：
+
+1. 章节可运行；  
+2. 现象可复现；  
+3. 结论可验证；  
+4. 经验可沉淀。
+
